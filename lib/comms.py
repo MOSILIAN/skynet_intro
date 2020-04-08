@@ -1,5 +1,7 @@
 import struct
-
+import hmac
+import hashlib
+import base64
 from dh import create_dh_key, calculate_dh_secret
 from .xor import XOR
 
@@ -14,7 +16,11 @@ class StealthConn(object):
         self.initiate_session()
 
     def initiate_session(self):
-        # Perform the initial connection handshake for agreeing on a shared secret 
+        # Perform the initial connection handshake for agreeing on a shared secret
+    def hamc_sha256(strContent):
+        h=hmac.new(skey.encoude(),strContent.encode(),hashlib.sha256)
+        return base64.b64encode(h.digest())
+         #pass
 
         ### TODO: Your code here!
         # This can be broken into code run just on the server or just on the clientasdsad
